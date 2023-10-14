@@ -17,7 +17,8 @@ pipeline{
                       chmod +x gradlew
                       ./gradlew sonarqube
                       '''
-                    }
+                }
+
 
                 timeout(5) {
                      def qg = waitForQualityGate()
