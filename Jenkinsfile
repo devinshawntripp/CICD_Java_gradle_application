@@ -13,7 +13,7 @@ pipeline{
             agent {
                 docker {
                     image 'openjdk:17'
-                    args '--user 1000:1000'  // Add this line if you face permission issues
+                    args '--user sonarqube:sonarqube'  // Add this line if you face permission issues
                 }
             }
             steps{
