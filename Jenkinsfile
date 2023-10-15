@@ -1,5 +1,9 @@
 pipeline{
     agent any 
+    environment{
+        PATH = "/bin"
+        VERSION = "${env.BUILD_ID}"
+    }
     stages{
         stage("Sonar Quality Check"){
             agent {
