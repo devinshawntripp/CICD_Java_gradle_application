@@ -1,9 +1,5 @@
 pipeline{
     agent any 
-    environment{
-        PATH = "/usr/bin"
-        VERSION = "${env.BUILD_ID}"
-    }
     stages{
         stage('Test SH') {
             steps {
