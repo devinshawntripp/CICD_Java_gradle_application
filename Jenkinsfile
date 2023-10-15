@@ -17,7 +17,9 @@ pipeline{
                     echo "Starting SonarQube quality check..."
 
                     withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        which sh
+                        echo 'Before running sh command'
+                        sh 'which sh'
+                        echo 'After running sh command'
                         sh 'chmod +x gradlew'
                         sh './gradlew sonar --debug --scan --stacktrace'
                         echo "SonarQube scan completed."
