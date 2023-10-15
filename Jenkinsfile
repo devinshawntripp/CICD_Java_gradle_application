@@ -12,8 +12,7 @@ pipeline{
         stage("Sonar Quality Check"){
             agent {
                 docker {
-                    image 'openjdk:17'
-                    args '--user sonarqube:sonarqube'  // Add this line if you face permission issues
+                    image 'openjdk:17-alpine'
                 }
             }
             steps{
