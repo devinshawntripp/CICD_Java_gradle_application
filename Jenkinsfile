@@ -5,6 +5,14 @@ pipeline{
         VERSION = "${env.BUILD_ID}"
     }
     stages{
+        stage('Test SH') {
+            steps {
+                script {
+                    echo 'Testing sh command outside withSonarQubeEnv'
+                    sh 'which sh'
+                }
+            }
+        }
         stage("Sonar Quality Check"){
             agent {
                 docker {
