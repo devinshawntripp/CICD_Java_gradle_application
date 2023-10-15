@@ -24,6 +24,7 @@ pipeline{
                         sh 'which sh'
                         echo 'After running sh command'
                         sh 'chmod +x gradlew'
+                        sh './gradlew clean build'
                         sh './gradlew sonar --debug --scan --stacktrace'
                         echo "SonarQube scan completed."
                     }
