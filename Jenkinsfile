@@ -7,7 +7,7 @@ pipeline{
         stage("Sonar Quality Check"){
             agent {
                 docker {
-                    image 'openjdk:17'
+                    image 'openjdk:8-jre-slim'
                     args '--user 1000:1000'  // Add this line if you face permission issues
                 }
             }
