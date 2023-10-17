@@ -1,9 +1,14 @@
 pipeline{
     agent any 
-    environment{
-        VERSION = "${env.BUILD_ID}"
-    }
     stages{
+        stage('Test SH') {
+            steps {
+                script {
+                    echo 'Testing sh command outside withSonarQubeEnv'
+                    sh 'which sh'
+                }
+            }
+        }
         stage("Sonar Quality Check"){
             agent {
                 docker {
@@ -16,8 +21,12 @@ pipeline{
                     echo "Starting SonarQube quality check..."
 
                     withSonarQubeEnv(credentialsId: 'sonar-token') {
+                        echo 'Before running sh command'
+                        sh 'which sh'
+                        echo 'After running sh command'
                         sh 'chmod +x gradlew'
-                        sh './gradlew sonar --debug --scan --stacktrace'
+                        sh './gradlew clean build'
+                        sh './gradlew sonarqube --debug --scan --stacktrace'
                         echo "SonarQube scan completed."
                     }
 
