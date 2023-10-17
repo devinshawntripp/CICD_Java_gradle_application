@@ -1,19 +1,10 @@
 pipeline{
     agent any 
     stages{
-        stage('Test SH') {
-            steps {
-                script {
-                    echo 'Testing sh command outside withSonarQubeEnv'
-                    sh 'which sh'
-                }
-            }
-        }
         stage("Sonar Quality Check"){
             agent {
                 docker {
                     image 'openjdk:8-jre-slim'
-                    args '--user 1000:1000'  // Add this line if you face permission issues
                 }
             }
             steps{
