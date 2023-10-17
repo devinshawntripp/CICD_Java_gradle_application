@@ -4,7 +4,7 @@ pipeline{
         stage("Sonar Quality Check"){
             agent {
                 docker {
-                    image 'openjdk:8-jre-slim'
+                    image 'openjdk:8-jdk-slim' // Changed from 'openjdk:8-jre-slim'
                 }
             }
             steps{
